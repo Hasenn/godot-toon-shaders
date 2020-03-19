@@ -1,0 +1,19 @@
+//Outline shader by DaveDaDev under the MIT license
+/*
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+shader_type spatial;
+render_mode cull_front, unshaded;
+
+uniform float outline_thickness : hint_range(0.0, 1.0, 0.001) = 0.005;
+uniform vec4 outline_color : hint_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+void vertex()
+{
+	VERTEX = (NORMAL * outline_thickness) + VERTEX;
+}
+
+void fragment()
+{
+	ALBEDO = outline_color.rgb;
+}

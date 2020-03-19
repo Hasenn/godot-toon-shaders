@@ -1,0 +1,345 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Toonz/Nband_toon_shader.shader" type="Shader" id=1]
+[ext_resource path="res://Toonz/toon_volumetric_dotting.shader" type="Shader" id=2]
+[ext_resource path="res://Toonz/gradient_toon_shader.shader" type="Shader" id=3]
+[ext_resource path="res://Toonz/toon_shader_outline.shader" type="Shader" id=4]
+[ext_resource path="res://GodotBall/GodotBall.dae" type="PackedScene" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/main_color = Color( 0.545098, 0.545098, 0.545098, 1 )
+shader_param/dots_scale = 15.0
+shader_param/dots_size = 0.3
+shader_param/dots_smooth = 0.1
+shader_param/light_smoothness = 0.05
+shader_param/ambient_color = Color( 0.517647, 0.517647, 0.517647, 1 )
+shader_param/ambient_strength = 0.5
+shader_param/shade = true
+shader_param/shade_tint = Color( 1, 1, 1, 1 )
+shader_param/shade_treshold = 0.8
+shader_param/shade_intensity = 1.0
+shader_param/shade_smoothness = 0.01
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/outline_thickness = 0.036
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.842742, 0.850806, 0.995968 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.0976563, 0.0263214, 0.0263214, 1, 0.395508, 0.395508, 0.395508, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="ShaderMaterial" id=5]
+next_pass = SubResource( 2 )
+shader = ExtResource( 3 )
+shader_param/main_color = Color( 0.219608, 0.207843, 0.207843, 1 )
+shader_param/specular_blob = true
+shader_param/specular_color = Color( 1, 1, 1, 1 )
+shader_param/blob_size = 0.2
+shader_param/glossiness = 0.0
+shader_param/specular_smoothness = 0.01
+shader_param/rim_lighting = true
+shader_param/rim_tint = Color( 0.164706, 0.164706, 0.164706, 1 )
+shader_param/rim_threshold = 0.306
+shader_param/rim_spread = 0.5
+shader_param/rim_softness = 0.05
+shader_param/shade = false
+shader_param/shade_tint = Color( 1, 1, 1, 1 )
+shader_param/shade_treshold = 0.8
+shader_param/shade_intensity = 1.0
+shader_param/shade_smoothness = 0.01
+shader_param/gradient = SubResource( 4 )
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.00806452, 0.733871, 0.758065, 0.782258, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.0223627, 0, 0, 1, 0.419922, 0, 0, 1, 0.576172, 0.576172, 0.576172, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 3 )
+shader_param/main_color = Color( 0.415686, 0.415686, 0.415686, 1 )
+shader_param/specular_blob = true
+shader_param/specular_color = Color( 1, 1, 1, 1 )
+shader_param/blob_size = 0.2
+shader_param/glossiness = 0.136
+shader_param/specular_smoothness = 0.01
+shader_param/rim_lighting = true
+shader_param/rim_tint = Color( 0.180392, 0.0392157, 0.0392157, 1 )
+shader_param/rim_threshold = 0.25
+shader_param/rim_spread = 0.5
+shader_param/rim_softness = 0.05
+shader_param/shade = true
+shader_param/shade_tint = Color( 1, 1, 1, 1 )
+shader_param/shade_treshold = 0.8
+shader_param/shade_intensity = 1.0
+shader_param/shade_smoothness = 0.01
+shader_param/gradient = SubResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 4 )
+shader_param/outline_thickness = 0.036
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.28066, 0.337264, 0.636792, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.0905835, 0.0905835, 0.0905835, 1, 0.287736, 0.287736, 0.287736, 1, 0.845533, 0.845533, 0.845533, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="ShaderMaterial" id=12]
+next_pass = SubResource( 9 )
+shader = ExtResource( 3 )
+shader_param/main_color = Color( 0.219608, 0.207843, 0.207843, 1 )
+shader_param/specular_blob = true
+shader_param/specular_color = Color( 1, 1, 1, 1 )
+shader_param/blob_size = 0.2
+shader_param/glossiness = 0.5
+shader_param/specular_smoothness = 0.01
+shader_param/rim_lighting = false
+shader_param/rim_tint = Color( 1, 1, 1, 1 )
+shader_param/rim_threshold = 0.25
+shader_param/rim_spread = 0.5
+shader_param/rim_softness = 0.05
+shader_param/shade = true
+shader_param/shade_tint = Color( 1, 1, 1, 1 )
+shader_param/shade_treshold = 0.8
+shader_param/shade_intensity = 1.0
+shader_param/shade_smoothness = 0.01
+shader_param/gradient = SubResource( 11 )
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 1 )
+shader_param/main_color = Color( 0.639216, 0.352941, 0.352941, 1 )
+shader_param/light_smoothness = 0.05
+shader_param/n_bands = 4
+shader_param/expand_light = 0.657
+shader_param/ambient_color = Color( 1, 1, 1, 1 )
+shader_param/ambient_strength = 0.5
+shader_param/specular_blob = true
+shader_param/specular_color = Color( 0.686275, 0.513726, 0.513726, 1 )
+shader_param/blob_size = 0.186
+shader_param/glossiness = 0.297
+shader_param/specular_smoothness = 0.01
+shader_param/rim_lighting = true
+shader_param/rim_tint = Color( 0.72549, 0.301961, 0.301961, 1 )
+shader_param/rim_threshold = 0.404
+shader_param/rim_spread = 0.5
+shader_param/rim_softness = 0.05
+shader_param/shade = true
+shader_param/shade_tint = Color( 1, 1, 1, 1 )
+shader_param/shade_treshold = 0.8
+shader_param/shade_intensity = 1.0
+shader_param/shade_smoothness = 0.01
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = ExtResource( 1 )
+shader_param/main_color = Color( 0.34902, 0.34902, 0.34902, 1 )
+shader_param/light_smoothness = 0.05
+shader_param/n_bands = 5
+shader_param/expand_light = 0.672
+shader_param/ambient_color = Color( 1, 1, 1, 1 )
+shader_param/ambient_strength = 0.5
+shader_param/specular_blob = false
+shader_param/specular_color = Color( 1, 1, 1, 1 )
+shader_param/blob_size = 0.2
+shader_param/glossiness = 0.199
+shader_param/specular_smoothness = 0.01
+shader_param/rim_lighting = true
+shader_param/rim_tint = Color( 0.266667, 0.266667, 0.266667, 1 )
+shader_param/rim_threshold = 0.25
+shader_param/rim_spread = 0.5
+shader_param/rim_softness = 0.05
+shader_param/shade = true
+shader_param/shade_tint = Color( 1, 1, 1, 1 )
+shader_param/shade_treshold = 0.8
+shader_param/shade_intensity = 1.0
+shader_param/shade_smoothness = 0.01
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = ExtResource( 4 )
+shader_param/outline_thickness = 0.062
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Shader" id=16]
+code = "//2 band cell shader by hasenn all rights reserved
+shader_type spatial;
+render_mode ambient_light_disabled;
+//tints the whole object
+uniform vec4 main_color : hint_color = vec4(1.);
+
+//how smooth the transition is between shadow and light
+uniform float light_smoothness : hint_range(0.00, 1.0, 0.001) = 0.05;
+
+//ambient color used as a multiplier for the shaded part
+uniform vec4 ambient_color : hint_color = vec4(1.);
+uniform float ambient_strength : hint_range(0.00, 2.0, 0.01) = 0.5;
+//specular blob parameters
+uniform bool specular_blob = true;
+uniform vec4 specular_color : hint_color = vec4(1.);
+uniform float blob_size : hint_range(0.00, 1.0, 0.001) = 0.2;
+uniform float glossiness : hint_range(0.00, 1.0, 0.001) = 0.5;
+uniform float specular_smoothness : hint_range(0.00, 0.2, 0.001) = 0.01;
+
+//rim lighting parameters
+uniform bool rim_lighting = true;
+uniform vec4 rim_tint : hint_color = vec4(1.);
+uniform float rim_threshold : hint_range(0.00, 1.0, 0.001) = 0.25;
+uniform float rim_spread : hint_range(0.00, 1.0, 0.001) = 0.5;
+uniform float rim_softness : hint_range(0.00, 1.0, 0.001) = 0.05;
+//Shadows and light attenuation
+uniform bool shade = true;
+uniform vec4 shade_tint : hint_color = vec4(1.,1.,1.,1.);
+uniform float shade_treshold : hint_range(0.00, 1.0, 0.001) = 0.8;
+uniform float shade_intensity : hint_range(0.00, 1.0, 0.001) = 1.;//1 = ambient light 0 = black
+uniform float shade_smoothness : hint_range(0.00, 0.5, 0.001) = 0.01;
+//textures
+uniform sampler2D main_texture : hint_white;
+
+void light(){
+	float NdotL = dot(NORMAL, LIGHT);
+	vec3 V = normalize(VIEW);
+	float is_lit = smoothstep(0.,light_smoothness,NdotL) ;
+	vec3 base_color = texture(main_texture, UV).rgb * main_color.rgb;
+	//diffuse_light
+	vec3 diffuse = 0.5*is_lit * base_color.rgb * LIGHT_COLOR;
+	//specular blob
+	if (specular_blob){
+		float amplitude = glossiness * glossiness;
+		float specularity = 1. - blob_size;
+		float NdotH = dot(NORMAL,0.5*(V+LIGHT));
+		float specular = smoothstep(
+			specularity,
+			specularity  + specular_smoothness,
+			(NdotH*is_lit)
+		);
+		//accounts for light color
+		diffuse += LIGHT_COLOR * specular * specular_color.rgb * amplitude;
+	}
+	if (rim_lighting){
+		float iVdotN = 1.-dot(V,NORMAL);
+		float i_rim_spread = 1. - rim_spread;
+		float i_rim_treshold = 1. - rim_threshold;
+		float rim_value = iVdotN * pow(NdotL, i_rim_spread);
+		rim_value = smoothstep(
+			i_rim_treshold - rim_softness,
+			i_rim_treshold + rim_softness,
+			rim_value
+			);
+		//Rim lighting color is tinted and accounts for light color
+		diffuse += rim_tint.rgb * rim_value * is_lit * LIGHT_COLOR;
+	}
+	
+	//ambient light applied to the whole object
+	vec3 ambient = ambient_strength * ambient_color.rgb * base_color;
+	diffuse += ambient;
+	if (shade){
+		float shd = smoothstep(
+			shade_treshold,
+			shade_treshold+shade_smoothness,
+			dot(ATTENUATION,ATTENUATION)
+			);
+		DIFFUSE_LIGHT += shd*diffuse + (1.-shd)*ambient*shade_tint.rgb*shade_intensity;
+	}
+	if (! shade) DIFFUSE_LIGHT += diffuse;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=17]
+next_pass = SubResource( 15 )
+shader = SubResource( 16 )
+shader_param/main_color = Color( 0.611765, 0.796078, 0.701961, 1 )
+shader_param/light_smoothness = 0.05
+shader_param/ambient_color = Color( 1, 1, 1, 1 )
+shader_param/ambient_strength = 0.5
+shader_param/specular_blob = true
+shader_param/specular_color = Color( 1, 1, 1, 1 )
+shader_param/blob_size = 0.2
+shader_param/glossiness = 0.5
+shader_param/specular_smoothness = 0.01
+shader_param/rim_lighting = true
+shader_param/rim_tint = Color( 1, 1, 1, 1 )
+shader_param/rim_threshold = 0.25
+shader_param/rim_spread = 0.5
+shader_param/rim_softness = 0.05
+shader_param/shade = true
+shader_param/shade_tint = Color( 1, 1, 1, 1 )
+shader_param/shade_treshold = 0.8
+shader_param/shade_intensity = 1.0
+shader_param/shade_smoothness = 0.01
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 16 )
+shader_param/main_color = Color( 0.290196, 0.290196, 0.290196, 1 )
+shader_param/light_smoothness = 0.05
+shader_param/ambient_color = Color( 1, 1, 1, 1 )
+shader_param/ambient_strength = 0.5
+shader_param/specular_blob = true
+shader_param/specular_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+shader_param/blob_size = 0.481
+shader_param/glossiness = 0.794
+shader_param/specular_smoothness = 0.01
+shader_param/rim_lighting = true
+shader_param/rim_tint = Color( 1, 1, 1, 1 )
+shader_param/rim_threshold = 0.25
+shader_param/rim_spread = 0.5
+shader_param/rim_softness = 0.05
+shader_param/shade = true
+shader_param/shade_tint = Color( 0.831373, 0.831373, 0.831373, 1 )
+shader_param/shade_treshold = 0.8
+shader_param/shade_intensity = 1.0
+shader_param/shade_smoothness = 0.01
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GodotBall" parent="." instance=ExtResource( 5 )]
+
+[node name="OBJ_GodotBall" parent="GodotBall" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436087, -0.184985, 0.0113188 )
+material/0 = SubResource( 1 )
+material/1 = SubResource( 5 )
+
+[node name="GodotBall2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+
+[node name="OBJ_GodotBall" parent="GodotBall2" index="0"]
+material/0 = SubResource( 8 )
+material/1 = SubResource( 12 )
+
+[node name="GodotBall3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+
+[node name="OBJ_GodotBall" parent="GodotBall3" index="0"]
+material/0 = SubResource( 13 )
+
+[node name="GodotBall4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+
+[node name="OBJ_GodotBall" parent="GodotBall4" index="0"]
+material/0 = SubResource( 14 )
+
+[node name="GodotBall5" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0 )
+
+[node name="OBJ_GodotBall" parent="GodotBall5" index="0"]
+material/0 = SubResource( 17 )
+material/1 = SubResource( 18 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.338474, 0.938754, 0.0646261, -0.416159, 0.0877433, 0.905049, 0.843947, -0.333231, 0.420369, 0, 7, 0 )
+
+[editable path="GodotBall"]
+
+[editable path="GodotBall2"]
+
+[editable path="GodotBall3"]
+
+[editable path="GodotBall4"]
+
+[editable path="GodotBall5"]
